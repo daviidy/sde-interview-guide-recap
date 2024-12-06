@@ -1,0 +1,3 @@
+Arrays are a very low level structure - meaning, their implementation is close to machine language. Because of this, we don’t go into the actual implementation, we focus on describing how they work.
+
+Arrays not only offer very fast access by index (O(1) runtime is the fastest runtime, as explained in the time complexity section) but they also typically offer better cache locality than certain other data structures such as linked lists or most hash maps . “Cache locality” refers to the fact that once your CPU loads a segment of the array into cache in order to read an element, you already have all its neighbors loaded into cache
