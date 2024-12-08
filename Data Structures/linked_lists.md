@@ -21,7 +21,7 @@ class LinkedList:
         current = self.head
         while current.next:
             current = current.next
-            current.next = new_node 
+        current.next = new_node 
     
     def delete(self, val_to_delete): 
         ctr = 0
@@ -31,13 +31,14 @@ class LinkedList:
             cur.next = None
             return 
         while cur is not None:
-            if cur.val == val_to_delete: break
-            prev = cur
-            cur = cur.next
-            prev.next = cur.next 
-            cur.next = None 
-            if cur == None:
-                return # not found  
+            if cur.val == val_to_delete: 
+                break
+        prev = cur
+        cur = cur.next
+        prev.next = cur.next 
+        cur.next = None 
+        if cur == None:
+            return # not found  
     
     def __str__(self):
         cur = self.head
