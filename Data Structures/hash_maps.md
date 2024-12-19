@@ -78,43 +78,46 @@ Map is expected to contain a number of elements that is less than
 half the size of the underlying array.
 
 ```python
-lass HashMapNode:
-def __init__(self, key, value):
-self.key = key
-self.value = value
+class HashMapNode:
+    def __init__(self, key, value):
+        self.key = key
+        self.value = value
+
 class HashMap:
-def __init__(self):
-self.store = [[] for
-self.size = 0
-in range(16)]
-_
-def get(self, key):
-# Python has a 'hash' function built-in
-index = hash(key) % len(self.store)
-chain = self.store[index]
-for kv in chain:
-if kv.key == key:
-return kv.value
-return None
-def put(self, key, value):
-new_node = HashMapNode(key, value)
-index = hash(key) % len(self.store)
-list_at_index = self.store[index]
-key_already_existed = False
-for kv in list_at_index:
-if kv.key == key:
-kv.value = value
-key_already_existed = True
-break
-if not key_already_existed:
-list_at_index.append(new_node)
-def delete(self, key):
-index = hash(key) % len(self.store)
-list_at_index = self.store[index]
-for kv in list_at_index:
-if kv.key == key:
-list_at_index.remove(kv)
-break
-def __len__(self):
-return self.size
+    def __init__(self):
+        self.store = [[] for self.size = 0 in range(16)]
+    
+    def get(self, key):
+        # Python has a 'hash' function built-in
+        index = hash(key) % len(self.store)
+        chain = self.store[index]
+        for kv in chain:
+            if kv.key == key:
+                return kv.value
+        return None
+
+    def put(self, key, value):
+        new_node = HashMapNode(key, value)
+        index = hash(key) % len(self.store)
+        list_at_index = self.store[index]
+        key_already_existed = False
+        for kv in list_at_index:
+            if kv.key == key:
+                kv.value = value
+                key_already_existed = True
+                break
+
+        if not key_already_existed:
+            list_at_index.append(new_node)
+
+    def delete(self, key):
+        index = hash(key) % len(self.store)
+        list_at_index = self.store[index]
+        for kv in list_at_index:
+            if kv.key == key:
+                list_at_index.remove(kv)
+                break
+
+    def __len__(self):
+        return self.size
 ```
