@@ -10,13 +10,12 @@ class LinkedList {
         this.head = new Node(val)
     }
 
-    append(node) {
+    insert(node) {
         let current = this.head
         while(current.next) {
             current = current.next
         }
         current.next = node
-        return node
     }
 
     insertBefore(index, node) {
@@ -29,7 +28,6 @@ class LinkedList {
         const temp = current.next 
         current.next = node 
         node.next = temp
-        return node
     }
 
     insertAfter(index, node) {
@@ -42,13 +40,17 @@ class LinkedList {
         const temp = current.next 
         current.next = node 
         node.next = temp
-        return node
     }
 
     delete(index) {
         let i = 0
         let current = this.head
-        while(i + 1 < index) {
+        if(i === index) {
+            this.head = current.next
+            current.next = null
+            return
+        }
+        while(i + 1 < index && current.next) {
             current = current.next
             i++
         }
@@ -56,6 +58,5 @@ class LinkedList {
         const temp = nodeToDelete.next
         current.next = temp 
         nodeToDelete.next = null
-        return true
     }
 }
